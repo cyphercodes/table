@@ -30,12 +30,6 @@ describe('angularReactivityFeature', () => {
         _features: { ...stockFeatures },
         columns: columns,
         getRowId: (row) => row.id,
-        reactivity: {
-          column: true,
-          cell: true,
-          row: true,
-          header: true,
-        },
       })),
     )
   }
@@ -44,7 +38,7 @@ describe('angularReactivityFeature', () => {
 
   describe('Integration', () => {
     // TODO this switches between 1 and 2 calls on every other run, so it's not a reliable test
-    test.skip('methods within effect will be re-trigger when options/state changes', () => {
+    test('methods within effect will be re-trigger when options/state changes', () => {
       const data = signal<Array<Data>>([{ id: '1', title: 'Title' }])
       const table = createTestTable(data)
       const isSelectedRow1Captor = vi.fn<(val: boolean) => void>()
